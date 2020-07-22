@@ -1,0 +1,14 @@
+{
+    "editor.fontSize": 13,
+    "window.zoomLevel": 0.5,
+    "editor.fontLigatures": true,
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "Fira Code, 'Courier New', monospace",
+    "workbench.colorTheme": "Tokyo Night",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    }
+}
