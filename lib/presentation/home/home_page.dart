@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hello_world/application/location/location_bloc.dart';
+import 'package:hello_world/injection.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -10,6 +13,55 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Ongkir"),
+      ),
+      body: Container(
+        child: BlocProvider(
+          create: (context) => getIt<LocationBloc>(),
+          child: BlocBuilder<LocationBloc, LocationState>(
+            builder: (context, state) {
+              return Container(
+                child: Column(
+                  children: <Widget>[
+                    RaisedButton(
+
+                      onPressed: () {
+                        context
+                            .bloc<LocationBloc>()
+                            .add(LocationEvent.getLocationProvince());
+                      },
+                      child: Text("Tekan"),
+                    ),
+                    state.maybeMap(orElse: () => Container(child: Text("Tidak ada data yang ditampilkan")), provinceDataOptions: (e) {
+                      if(e.onLoading == true){
+                          return Container(child: Center(child: CircularProgressIndicator(),));          
+                      } else {
+                        return e.dataProvince.fold(() => Container(
+                          child: Text("Datanya None"),), 
+                          (a) => a.fold(
+                            (l) => Container(child: Text(l.toString()),), 
+                          (r) =>  Expanded(child: ListView.builder(
+                            itemCount: r.results.length,
+                            itemBuilder: (context, index){
+                              return ListTile(
+                                title: Text(
+                                  r.results[index].province
+                                ),
+                              );
+                            })))
+                          );
+                      }
+                    }),
+                   
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
   }
 }

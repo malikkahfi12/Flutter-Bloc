@@ -1,4 +1,4 @@
-import 'dart:html';
+
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -21,9 +21,12 @@ class LocationRepository extends LocationInterface {
           options:
               Options(headers: {"key": "f2e3b99c86cb0052ecb45e442d9b9e86"}));
       final _result = response.data['rajaongkir'];
+      print(_result.toString());
       final data = ProvinceResponse.fromJson(_result);
+      print(data.status.code);
       return right(data);
     } catch (e) {
+      print(e);
       return left(e.toString());
     }
   }

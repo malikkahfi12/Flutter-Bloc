@@ -23,7 +23,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     LocationEvent event,
   ) async* {
     yield* event.map(
-        getLocationData: (e) async* {
+        getLocationProvince: (e) async* {
           yield LocationState.provinceDataOptions(
               onLoading: true, dataProvince: none());
           final _result =
@@ -31,6 +31,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
           yield LocationState.provinceDataOptions(
               onLoading: false, dataProvince: some(_result));
         },
-        getLocationProvince: null);
+        getLocationCity: (e) async*{},
+    );
   }
 }

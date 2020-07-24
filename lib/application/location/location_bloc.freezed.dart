@@ -13,7 +13,7 @@ class _$LocationEventTearOff {
   const _$LocationEventTearOff();
 
 // ignore: unused_element
-  GetLocationCity getLocationData() {
+  GetLocationCity getLocationCity() {
     return GetLocationCity();
   }
 
@@ -29,23 +29,23 @@ const $LocationEvent = _$LocationEventTearOff();
 mixin _$LocationEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result getLocationData(),
+    @required Result getLocationCity(),
     @required Result getLocationProvince(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result getLocationData(),
+    Result getLocationCity(),
     Result getLocationProvince(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result getLocationData(GetLocationCity value),
+    @required Result getLocationCity(GetLocationCity value),
     @required Result getLocationProvince(GetLocationProvince value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result getLocationData(GetLocationCity value),
+    Result getLocationCity(GetLocationCity value),
     Result getLocationProvince(GetLocationProvince value),
     @required Result orElse(),
   });
@@ -90,14 +90,14 @@ class _$GetLocationCity
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LocationEvent.getLocationData()';
+    return 'LocationEvent.getLocationCity()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'LocationEvent.getLocationData'));
+      ..add(DiagnosticsProperty('type', 'LocationEvent.getLocationCity'));
   }
 
   @override
@@ -111,24 +111,24 @@ class _$GetLocationCity
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result getLocationData(),
+    @required Result getLocationCity(),
     @required Result getLocationProvince(),
   }) {
-    assert(getLocationData != null);
+    assert(getLocationCity != null);
     assert(getLocationProvince != null);
-    return getLocationData();
+    return getLocationCity();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result getLocationData(),
+    Result getLocationCity(),
     Result getLocationProvince(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (getLocationData != null) {
-      return getLocationData();
+    if (getLocationCity != null) {
+      return getLocationCity();
     }
     return orElse();
   }
@@ -136,24 +136,24 @@ class _$GetLocationCity
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result getLocationData(GetLocationCity value),
+    @required Result getLocationCity(GetLocationCity value),
     @required Result getLocationProvince(GetLocationProvince value),
   }) {
-    assert(getLocationData != null);
+    assert(getLocationCity != null);
     assert(getLocationProvince != null);
-    return getLocationData(this);
+    return getLocationCity(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result getLocationData(GetLocationCity value),
+    Result getLocationCity(GetLocationCity value),
     Result getLocationProvince(GetLocationProvince value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (getLocationData != null) {
-      return getLocationData(this);
+    if (getLocationCity != null) {
+      return getLocationCity(this);
     }
     return orElse();
   }
@@ -208,10 +208,10 @@ class _$GetLocationProvince
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result getLocationData(),
+    @required Result getLocationCity(),
     @required Result getLocationProvince(),
   }) {
-    assert(getLocationData != null);
+    assert(getLocationCity != null);
     assert(getLocationProvince != null);
     return getLocationProvince();
   }
@@ -219,7 +219,7 @@ class _$GetLocationProvince
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result getLocationData(),
+    Result getLocationCity(),
     Result getLocationProvince(),
     @required Result orElse(),
   }) {
@@ -233,10 +233,10 @@ class _$GetLocationProvince
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result getLocationData(GetLocationCity value),
+    @required Result getLocationCity(GetLocationCity value),
     @required Result getLocationProvince(GetLocationProvince value),
   }) {
-    assert(getLocationData != null);
+    assert(getLocationCity != null);
     assert(getLocationProvince != null);
     return getLocationProvince(this);
   }
@@ -244,7 +244,7 @@ class _$GetLocationProvince
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result getLocationData(GetLocationCity value),
+    Result getLocationCity(GetLocationCity value),
     Result getLocationProvince(GetLocationProvince value),
     @required Result orElse(),
   }) {
