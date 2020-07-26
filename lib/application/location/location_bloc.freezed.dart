@@ -270,8 +270,10 @@ class _$LocationStateTearOff {
 
 // ignore: unused_element
   _ProvinceDataOptions provinceDataOptions(
-      {@required bool onLoading,
-      @required Option<Either<String, ProvinceResponse>> dataProvince}) {
+      {@required
+          bool onLoading,
+      @required
+          Option<Either<LocationFailure, ProvinceResponse>> dataProvince}) {
     return _ProvinceDataOptions(
       onLoading: onLoading,
       dataProvince: dataProvince,
@@ -288,13 +290,13 @@ mixin _$LocationState {
     @required Result initial(),
     @required
         Result provinceDataOptions(bool onLoading,
-            Option<Either<String, ProvinceResponse>> dataProvince),
+            Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result provinceDataOptions(
-        bool onLoading, Option<Either<String, ProvinceResponse>> dataProvince),
+    Result provinceDataOptions(bool onLoading,
+        Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -367,7 +369,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     @required Result initial(),
     @required
         Result provinceDataOptions(bool onLoading,
-            Option<Either<String, ProvinceResponse>> dataProvince),
+            Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
   }) {
     assert(initial != null);
     assert(provinceDataOptions != null);
@@ -378,8 +380,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result provinceDataOptions(
-        bool onLoading, Option<Either<String, ProvinceResponse>> dataProvince),
+    Result provinceDataOptions(bool onLoading,
+        Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -424,7 +426,8 @@ abstract class _$ProvinceDataOptionsCopyWith<$Res> {
           $Res Function(_ProvinceDataOptions) then) =
       __$ProvinceDataOptionsCopyWithImpl<$Res>;
   $Res call(
-      {bool onLoading, Option<Either<String, ProvinceResponse>> dataProvince});
+      {bool onLoading,
+      Option<Either<LocationFailure, ProvinceResponse>> dataProvince});
 }
 
 class __$ProvinceDataOptionsCopyWithImpl<$Res>
@@ -446,7 +449,7 @@ class __$ProvinceDataOptionsCopyWithImpl<$Res>
       onLoading: onLoading == freezed ? _value.onLoading : onLoading as bool,
       dataProvince: dataProvince == freezed
           ? _value.dataProvince
-          : dataProvince as Option<Either<String, ProvinceResponse>>,
+          : dataProvince as Option<Either<LocationFailure, ProvinceResponse>>,
     ));
   }
 }
@@ -462,7 +465,7 @@ class _$_ProvinceDataOptions
   @override
   final bool onLoading;
   @override
-  final Option<Either<String, ProvinceResponse>> dataProvince;
+  final Option<Either<LocationFailure, ProvinceResponse>> dataProvince;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -507,7 +510,7 @@ class _$_ProvinceDataOptions
     @required Result initial(),
     @required
         Result provinceDataOptions(bool onLoading,
-            Option<Either<String, ProvinceResponse>> dataProvince),
+            Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
   }) {
     assert(initial != null);
     assert(provinceDataOptions != null);
@@ -518,8 +521,8 @@ class _$_ProvinceDataOptions
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result provinceDataOptions(
-        bool onLoading, Option<Either<String, ProvinceResponse>> dataProvince),
+    Result provinceDataOptions(bool onLoading,
+        Option<Either<LocationFailure, ProvinceResponse>> dataProvince),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -557,11 +560,13 @@ class _$_ProvinceDataOptions
 
 abstract class _ProvinceDataOptions implements LocationState {
   factory _ProvinceDataOptions(
-          {@required bool onLoading,
-          @required Option<Either<String, ProvinceResponse>> dataProvince}) =
+          {@required
+              bool onLoading,
+          @required
+              Option<Either<LocationFailure, ProvinceResponse>> dataProvince}) =
       _$_ProvinceDataOptions;
 
   bool get onLoading;
-  Option<Either<String, ProvinceResponse>> get dataProvince;
+  Option<Either<LocationFailure, ProvinceResponse>> get dataProvince;
   _$ProvinceDataOptionsCopyWith<_ProvinceDataOptions> get copyWith;
 }

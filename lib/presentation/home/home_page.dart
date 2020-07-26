@@ -26,7 +26,6 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: <Widget>[
                     RaisedButton(
-
                       onPressed: () {
                         context
                             .bloc<LocationBloc>()
@@ -34,27 +33,41 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: Text("Tekan"),
                     ),
-                    state.maybeMap(orElse: () => Container(child: Text("Tidak ada data yang ditampilkan")), provinceDataOptions: (e) {
-                      if(e.onLoading == true){
-                          return Container(child: Center(child: CircularProgressIndicator(),));          
-                      } else {
-                        return e.dataProvince.fold(() => Container(
-                          child: Text("Datanya None"),), 
-                          (a) => a.fold(
-                            (l) => Container(child: Text(l.toString()),), 
-                          (r) =>  Expanded(child: ListView.builder(
-                            itemCount: r.results.length,
-                            itemBuilder: (context, index){
-                              return ListTile(
-                                title: Text(
-                                  r.results[index].province
-                                ),
-                              );
-                            })))
-                          );
-                      }
-                    }),
-                   
+                    state.maybeMap(
+                        orElse: () => Container(
+                            child: Text("Tidak ada data yang ditampilkan")),
+                        provinceDataOptions: (e) {
+                          if (e.onLoading == true) {
+                            return Container(
+                                child: Center(
+                              child: CircularProgressIndicator(),
+                            ));
+                          } else {
+                            return e.dataProvince.fold(
+                                () => Container(
+                                      child: Text("Datanya None"),
+                                    ),
+                                (a) => a.fold(
+                                    (l) => l.map(
+                                        notFound: (e) =>
+                                            errorGetProvinceWidget(e.msg),
+                                        badRequest: (e) =>
+                                            errorGetProvinceWidget(
+                                                e.badRequest),
+                                        serverError: (e) =>
+                                            errorGetProvinceWidget(
+                                                "Server Error")),
+                                    (r) => Expanded(
+                                        child: ListView.builder(
+                                            itemCount: r.results.length,
+                                            itemBuilder: (context, index) {
+                                              return ListTile(
+                                                title: Text(
+                                                    r.results[index].province),
+                                              );
+                                            }))));
+                          }
+                        }),
                   ],
                 ),
               );
@@ -63,5 +76,12 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  Expanded errorGetProvinceWidget(String message) {
+    return Expanded(
+        child: Container(
+      child: Text(message),
+    ));
   }
 }
